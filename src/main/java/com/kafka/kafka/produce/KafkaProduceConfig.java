@@ -29,6 +29,12 @@ public class KafkaProduceConfig {
     @Value("${spring.kafka.producer.linger.ms}")
     private String lingerMs;
 
+    @Value("${spring.kafka.producer.enable.idempotence}")
+    private String enableIdempotence;
+
+    @Value("${spring.kafka.producer.max.in.flight.requests.per.connection}")
+    private String maxInFlightRequestsPerConnection;
+
 
     /**
         프로듀서 설정 Factory 종류별로 변경하고
@@ -40,6 +46,9 @@ public class KafkaProduceConfig {
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, keyDeSerializer);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, valueDeSerializer);
         configProps.put(ProducerConfig.LINGER_MS_CONFIG, lingerMs);
+        configProps.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, enableIdempotence);
+        configProps.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, maxInFlightRequestsPerConnection);
+
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 

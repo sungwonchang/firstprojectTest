@@ -89,6 +89,8 @@ public class KafkaProduce {
                 .setHeader(KafkaHeaders.MESSAGE_KEY, messageKey)
                 .build();
 
+
+
         ListenableFuture<SendResult<String, String>> future =
                 kafkaTemplate.send(messageBuilder);
 
