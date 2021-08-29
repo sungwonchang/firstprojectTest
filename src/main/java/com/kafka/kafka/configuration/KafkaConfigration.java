@@ -14,6 +14,11 @@ import java.util.Map;
 
 @Configuration
 public class KafkaConfigration {
+    /**
+     * 최신버전은 자동으로 빈에 등록된다고 한다. 아마도 application.properties
+     * spring.kafka.bootstrap-servers 정보로 자동 등록이 된다고 보면 될듯.
+     * @return
+     */
 //    @Bean
 //    public KafkaAdmin admin() {
 //        Map<String, Object> configs = new HashMap<>();

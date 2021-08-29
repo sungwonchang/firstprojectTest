@@ -1,6 +1,7 @@
 spring:
   kafka:
     bootstrap-servers: localhost:9092
+#컨슈머 셋팅
     consumer:
       group-id: new-topic
       enable-auto-commit: true
@@ -8,11 +9,16 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       max-poll-records: 1000
+#프로듀서 셋팅
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      linger:
+        ms: 1000  #1초로 한번 설정해보자.
     template:
       default-topic: new-topic
+
+#여긴 설정하기 나름
 sample:
   topic:
     news: sample-news
@@ -23,5 +29,3 @@ sample:
   group:
     news: sample-news
     music: sample-music
-server:
-  port: 9991
