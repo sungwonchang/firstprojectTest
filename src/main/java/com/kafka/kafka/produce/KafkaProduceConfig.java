@@ -32,8 +32,8 @@ public class KafkaProduceConfig {
     @Value("${spring.kafka.producer.enable.idempotence}")
     private String enableIdempotence;
 
-//    @Value("${spring.kafka.producer.max.in.flight.requests.per.connection}")
-//    private String maxInFlightRequestsPerConnection;
+    @Value("${spring.kafka.producer.max.in.flight.requests.per.connection}")
+    private String maxInFlightRequestsPerConnection;
 
 
     /**
@@ -47,7 +47,7 @@ public class KafkaProduceConfig {
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, valueDeSerializer);
         configProps.put(ProducerConfig.LINGER_MS_CONFIG, lingerMs);
         configProps.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, enableIdempotence);
-        //configProps.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, maxInFlightRequestsPerConnection);
+        configProps.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, maxInFlightRequestsPerConnection);
 
         return new DefaultKafkaProducerFactory<>(configProps);
     }
